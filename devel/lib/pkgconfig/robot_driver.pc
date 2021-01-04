@@ -1,0 +1,8 @@
+prefix=/home/ialab2020/Desktop/ros_ur3_unity_vr/devel
+
+Name: robot_driver
+Description: Description of robot_driver
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC   -shared -Wl,-soname,libur3_kin.so -o /home/ialab2020/Desktop/ros_ur3_unity_vr/devel/lib/libur3_kin.so CMakeFiles/ur3_kin.dir/src/ur_kin.cpp.o 

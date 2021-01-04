@@ -1,0 +1,8 @@
+prefix=/home/ialab2020/Desktop/ros_ur3_unity_vr/install
+
+Name: ur3_robotics
+Description: Description of ur3_robotics
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 
