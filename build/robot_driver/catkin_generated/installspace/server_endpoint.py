@@ -7,6 +7,7 @@ from ros_tcp_endpoint.server import TcpServer
 from ros_tcp_endpoint.publisher import RosPublisher
 from ros_tcp_endpoint.subscriber import RosSubscriber
 from ros_tcp_endpoint.service import RosService
+from geometry_msgs.msg import Pose
 
 from ur3_robotics.msg import UR3Joints
 
@@ -18,7 +19,8 @@ def main():
     tcp_server = TcpServer(ros_node_name, buffer_size, connections)
 
     tcp_server.source_destination_dict = {
-        'joint_state': RosPublisher('joint_state', UR3Joints, queue_size=10)
+        'joint_state': RosPublisher('joint_state', UR3Joints, queue_size=10),
+        'tracker_pose': RosPublisher('tracker_pose', Pose, queue_size=10)
 
     }
 

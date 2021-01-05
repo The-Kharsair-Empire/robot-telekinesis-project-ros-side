@@ -1,8 +1,6 @@
 <launch>
     <rosparam file="$(find robot_driver)/config/params.yaml" command="load"/>
-    <arg name="reset_robot_pos" default="false" doc="If true, it will first set the robot to default hardcoded position hardcoded in robot_default_pos.py"/>
 
     <node name="server_endpoint" pkg="robot_driver" type="server_endpoint.py" respawn="true" output="screen" args="--wait"/>
-    <node name="relay" pkg="robot_driver" type="relay.py" respawn="false" output="screen" args="$(arg reset_robot_pos)"/>
 
 </launch>

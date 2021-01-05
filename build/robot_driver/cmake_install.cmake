@@ -63,3 +63,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/robot_driver" TYPE PROGRAM FILES "/home/ialab2020/Desktop/ros_ur3_unity_vr/build/robot_driver/catkin_generated/installspace/relay.py")
 endif()
 
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/robot_driver" TYPE PROGRAM FILES "/home/ialab2020/Desktop/ros_ur3_unity_vr/build/robot_driver/catkin_generated/installspace/tracker_pose_relay.py")
+endif()
+

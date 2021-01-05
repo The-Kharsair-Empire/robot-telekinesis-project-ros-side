@@ -127,30 +127,51 @@ def go_to_joint_goal(info):
 
 def go_to_pos_goal(info):
     destination_pos = geometry_msg_lib.Pose()
+    #destination_pos.orientation.x = 0.5
+    #destination_pos.orientation.y = 0.5
+    #destination_pos.orientation.z = -0.5
     destination_pos.orientation.w = 1.0
+
+   #destination_pos.position.x = -0.18
+
+    #destination_pos.position.y = -0.23
+
+   # destination_pos.position.z = 1.24
+
     destination_pos.position.x = 0.4
+
     destination_pos.position.y = 0.1
+
     destination_pos.position.z = 0.4
 
+   #move_group.set_current_state_as_start_state()
+
     move_group.set_pose_target(destination_pos)
+
+
+
+    plan = move_group.plan()
+    if info:
+
+        print('==== The Planner returns plan of:\n {}'.format(plan))
+
     plan = move_group.go(wait=True)
+
+    if info:
+        print('==== plan executed :  {}'.format(plan))
 
     move_group.stop()
     move_group.clear_pose_targets()
-
-    if info:
-        print('==== The Planner returns plan of {}'.format(plan))
-
     return plan
 
 
 if __name__ == '__main__':
     setup(info=True, movegroup='manipulator')
     #all_zero(robot_model)
-
-    match_unity(robot_model)
+    #go_to_pos_goal(info=True)
+    #match_unity(robot_model)
     #go_to_joint_goal(info=True)
-    #default_robot_position(robot_model)
+    default_robot_position(robot_model)
 
 
 

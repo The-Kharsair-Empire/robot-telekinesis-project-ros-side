@@ -69,6 +69,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/ialab2020/Desktop/ros_ur3_unity_vr/src/robot_driver/package.xml"
   "/home/ialab2020/Desktop/ros_ur3_unity_vr/src/robot_driver/scripts/relay.py"
   "/home/ialab2020/Desktop/ros_ur3_unity_vr/src/robot_driver/scripts/server_endpoint.py"
+  "/home/ialab2020/Desktop/ros_ur3_unity_vr/src/robot_driver/scripts/tracker_pose_relay.py"
   "/home/ialab2020/Desktop/ros_ur3_unity_vr/src/ros_tcp_endpoint/CMakeLists.txt"
   "/home/ialab2020/Desktop/ros_ur3_unity_vr/src/ros_tcp_endpoint/package.xml"
   "/home/ialab2020/Desktop/ros_ur3_unity_vr/src/ros_tcp_endpoint/setup.py"

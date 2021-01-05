@@ -164,6 +164,7 @@ include_directories(
 catkin_install_python(PROGRAMS
    scripts/server_endpoint.py
    scripts/relay.py
+   scripts/tracker_pose_relay.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
