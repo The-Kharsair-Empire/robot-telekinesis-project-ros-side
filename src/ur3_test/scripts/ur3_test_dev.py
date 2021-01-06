@@ -33,12 +33,13 @@ def setup(info, **kwargs):
     planning_frame = move_group.get_planning_frame()
     eef_link = move_group.get_end_effector_link()
     group_names = robot.get_group_names()
+    robot_state = robot.get_current_state()
 
     if info:
         print('==== Reference frame: {}'.format(planning_frame))
         print('==== End effector ==: {}'.format(eef_link))
         print('==== Robot groups ==: {}'.format(group_names))
-        print('==== Robot state ===: {}'.format(robot.get_current_state()))
+        print('==== Robot state ===: {}'.format(robot_state))
 
 
 def default_robot_position(robot_model):
@@ -78,8 +79,6 @@ def match_unity(robot_model):
         offset_wrist2 = 0
         offset_wrist3 = 0
 
-
-
         joint_state.append(0 + radians(offset_base))
         joint_state.append(0 + radians(offset_shoulder))
         joint_state.append(0 + radians(offset_elbow))
@@ -102,6 +101,27 @@ def rotation_dance(robot_model, dance_length=20):
 
             move_group.stop()
 
+def display_plan(plan): # to use it, you need to open rviz UI, pass argument UI:=true when you roslaunch robot.launch
+    trajectory_msg = moveit_msg_lib.DisplayTrajectory()
+    trajectory_msg.trajectory_start = robot.get_current_state()
+    trajectory_msg.trajectory.append(plan)
+    display_trajectory_publisher.publish(trajectory_msg)
+
+    print("==== plan is being visualized")
+    rospy.sleep(5)
+
+def generate_plan():
+
+    target_pose = geometry_msg_lib.Pose()
+    target_pose.orientation.w = 1.0
+    target_pose.position.x = 0.7
+    target_pose.position.y = -0.05
+    target_pose.position.z = 1.1
+    move_group.set_pose_target(target_pose)
+    return move_group.plan()
+
+def clear_target():
+    move_group.clear_pose_targets()
 
 def go_to_joint_goal(info):
     joint_state = move_group.get_current_joint_values()
@@ -116,7 +136,7 @@ def go_to_joint_goal(info):
     joint_state[3] = -pi / 1
     joint_state[4] = -pi / 3
     joint_state[5] = -pi / 2
-    # joint_state[6] = 0, ur3 robot has only 6 joints
+    #  ur3 robot has only 6 joints, namely 6DoF
 
     move_group.go(joint_state, wait=True)
 
